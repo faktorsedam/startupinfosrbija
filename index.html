@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		
+		<title>Mapa startup lokacija u Srbiji</title>
+
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<link rel="shortcut icon" type="image/x-icon" href="css/images/marker-shadow.png" />
+
+	    <link rel="stylesheet" href="css/mapa.css"/>
+	    <script src="js/mapa.js"></script>
+		
+	</head>
+	<style type="text/css">
+        .infoBoks{
+        	position: absolute;
+            z-index: inherit;
+		    width: inherit;
+		    height: inherit;
+		    right: 0px;
+		    top: 0px;
+		    color: white;
+        }
+		.leaflet-popup-content {
+		    margin: 22px 0px 22px 0px;
+		    line-height: 1.6;
+		}
+		.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+		    background: #232323;
+		    color: #fff;
+		    box-shadow: 0 3px 14px rgba(0,0,0,0.4);
+		}
+		.popupinfo{
+			padding: 8px 10px 0px 10px;
+		}
+		.mapa{
+			top: 0px;
+			left: 0px;
+			width: 75vw;
+			height: 100vh;
+		}
+		.infopanel {
+		    position: absolute;
+		    display: block;
+		    float: left;
+		    top: 0px;
+		    right: 0px;
+		    width: 25vw;
+		    height: 100vh;
+		    border-left: 6px solid skyblue;
+		    padding: 0;
+		    margin: 0px;
+		    z-index: 400;
+		}
+		h1{
+			color: #fff;
+			padding: 0 2rem 2rem 2rem;
+		}
+		.modalDialog {
+			position: absolute;
+			font-family: Arial, Helvetica, sans-serif;
+			top: 6rem;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			z-index: 99999;
+			opacity:0;
+			-webkit-transition: opacity 400ms ease-in;
+			-moz-transition: opacity 400ms ease-in;
+			transition: opacity 400ms ease-in;
+			pointer-events: none;
+		}
+
+		.modalDialog:target {
+			opacity:1;
+			pointer-events: auto;
+		}
+
+		.modalDialog > div {
+			width: 80%;
+			position: relative;
+			margin: 10% auto;
+			padding: 5px 20px 13px 20px;
+			border-radius: 10px;
+			border:1px solid silver;
+		}
+
+		.close {
+			background: #606061;
+			color: #FFFFFF;
+			line-height: 25px;
+			position: absolute;
+			right: 6px;
+			text-align: center;
+			top: 6px;
+			width: 24px;
+			text-decoration: none;
+			font-weight: bold;
+			-webkit-border-radius: 12px;
+			-moz-border-radius: 12px;
+			border-radius: 12px;
+			-moz-box-shadow: 1px 1px 3px #000;
+			-webkit-box-shadow: 1px 1px 3px #000;
+			box-shadow: 1px 1px 3px #000;
+		}
+
+		.close:hover { background: tomato; }	
+
+		.leaflet-right {
+		    right: 6px;
+		}
+		.popupphoto{
+			width: 100%;
+			border-bottom: 1px solid gold;
+		}
+	</style>
+	<body style="margin: 0px; background: #232323;">
+
+
+
+	<div id="mapa" class="mapa"></div>
+	<div id="infopanel" class="infopanel">
+		<h1>Info</h1>
+		<div id="infoBoks" class="infoBoks">
+
+			<div id="openModalKrusevac1" class="modalDialog">
+				<div>
+					<a href="#close" title="Zatvori" class="close">&nbsp;</a>
+					<h2>Regionalni inovacioni startup centar Rasinskog okruga</h2>
+					<img src="photos/risc_image_2019-08-15_18-20-49-1200x480.jpg" width = '100%'><br />
+					<p>Dodati listu vitalnih informacija.</p>
+					<p>Koje su to vitalne informacije</p>
+				</div>
+			</div>
+
+			<div id="openModalNis1" class="modalDialog">
+				<div>
+					<a href="#close" title="Zatvori" class="close">&nbsp;</a>
+					<h2>Startup centar Niš</h2>
+					<img src="photos/startupcentarnis1.jpg" width = '100%'><br />
+					<p>This is a sample modal box that can be created using the powers of CSS3.</p>
+					<p>You could do a lot of things here like have a pop-up ad that shows when your website loads, or create a login/register form for users.</p>
+				</div>
+			</div>			
+
+		</div>
+	</div>
+
+	<script>
+
+		var srbija = L.map('mapa').setView([43.7233858, 20.6765698], 8);
+
+		L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+			maxZoom: 18,
+			attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+				'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+				'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+			id: 'mapbox.streets'
+		}).addTo(srbija);
+		<!-- Lokacije -->
+		L.marker([43.5890434, 21.3179328]).addTo(srbija)
+			.bindPopup("<img class='popupphoto' src='photos/risc_image_2019-08-15_18-20-49-1200x480.jpg'><br /><p class=\"popupinfo\"><b>RISC Rasinskog okruga</b><br />www.biznisinkubator.rs/risc<br /><a href=\"#openModalKrusevac1\">Detaljnije</a></p>");
+
+
+		L.marker([43.3314121,21.8900052]).addTo(srbija)
+			.bindPopup("<img src=\"photos/startupcentarnis1.jpg\" width = '100%'><br /><p class=\"popupinfo\"><b>Startap centar Niš</b><br />www.startupcentarnis.org<br /><a href=\"#openModalNis1\">Detaljnije</a></p>");
+
+
+	</script>
+
+
+
+	</body>
+</html>
