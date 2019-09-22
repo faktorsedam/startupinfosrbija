@@ -1,4 +1,5 @@
-# [Latitude, Longitude], Naziv, URL, 
+# [Latitude, Longitude], Naziv, Adresa, www, Površina, Radnih mesta, Mesta za studente, Oprema za primenjeni naučno-istraživački rad, Mentorska i savetodavna podrška, Edukacije i radionice, Sala za sastanke, Sala za prezentacije, Biblioteka, Kuhinja, Parking  
 
-[43.5890434, 21.3179328], RISC Rasinskog okruga, http://biznisinkubator.rs/risc
-[43.3314121,21.8900052], Startap centar Niš, https://startupcentarnis.org 
+[43.5890434, 21.3179328], RISC Rasinskog okruga, Jasički put 9а, 37208 Kruševac, www.biznisinkubator.rs/risc, 300, 17+16+6, -. Da, Da, Da, Da, Da, Da, Da, Da
+
+[43.3314121,21.8900052], Startap centar Niš, Aleksandra Medvedeva 14, 18000 Niš, www.startupcentarnis.org, 600, 24, 12. Da, Da, Da, Da, Da, -, Da, -
